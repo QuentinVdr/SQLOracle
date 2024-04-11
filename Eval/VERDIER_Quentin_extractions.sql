@@ -15,7 +15,6 @@ GROUP BY
 
 -- épreuve 2.2
 -- On sait que le code des vehicules electrique et hibride sont "EL", "EE", "EH", "GL", "GH" grace à SELECT * FROM EVAL.ENERGIES;
--- Idée des regex trouvé sur stackoverflow mais généré avec internet
 SELECT
   P.NOM,
   P.PRENOM,
