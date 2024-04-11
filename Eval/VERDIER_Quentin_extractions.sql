@@ -1,0 +1,10 @@
+-- On sait que le code des vehicules electrique est "EL" grace à SELECT * FROM EVAL.ENERGIES;
+SELECT
+  V.MARQUE,
+  V.MODELE
+FROM
+  EVAL.VEHICULES V
+  INNER JOIN EVAL.MODELES M
+  ON M.MODELE = V.MODELE
+WHERE
+  M.ENERGIE = 'EL';
