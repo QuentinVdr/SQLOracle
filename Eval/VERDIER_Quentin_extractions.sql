@@ -1,17 +1,15 @@
 -- épreuve 2.1
 -- On sait que le code des vehicules electrique est "EL" grace à SELECT * FROM EVAL.ENERGIES;
 SELECT
-  V.MARQUE,
-  V.MODELE
+  M.MARQUE,
+  M.MODELE
 FROM
-  EVAL.VEHICULES V
-  INNER JOIN EVAL.MODELES M
-  ON M.MODELE = V.MODELE
+  EVAL.MODELES M
 WHERE
   M.ENERGIE = 'EL'
 GROUP BY
-  V.MARQUE,
-  V.MODELE;
+  M.MARQUE,
+  M.MODELE;
 
 -- épreuve 2.2
 -- On sait que le code des vehicules electrique et hibride sont "EL", "EE", "EH", "GL", "GH" grace à SELECT * FROM EVAL.ENERGIES;
@@ -37,7 +35,7 @@ WHERE
 
 -- épreuve 2.3
 SELECT
-  MAX(C.MONTANT),
+  MAX(C.MONTANT)    AS MONTANT_MAX,
   V.IMMATRICULATION
 FROM
   EVAL.CONTRAVENTIONS C
