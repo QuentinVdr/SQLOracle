@@ -1,4 +1,10 @@
+-- épreuve 2.1
 -- On sait que le code des vehicules electrique est "EL" grace à SELECT * FROM EVAL.ENERGIES;
+SELECT
+  *
+FROM
+  EVAL.ENERGIES;
+
 SELECT
   V.MARQUE,
   V.MODELE
@@ -8,3 +14,34 @@ FROM
   ON M.MODELE = V.MODELE
 WHERE
   M.ENERGIE = 'EL';
+
+-- épreuve 2.2
+-- On sait que le code des vehicules electrique et hibride sont "EL", "EE", "EH", "GL", "GH" grace à SELECT * FROM EVAL.ENERGIES;
+-- Idée des regex trouvé sur stackoverflow mais généré avec internet
+SELECT
+  P.NOM,
+  P.PRENOM,
+  M.MODELE,
+  A.CODE_POSTAL
+FROM
+  EVAL.PERSONNES P
+  INNER JOIN EVAL.VEHICULES V
+  ON P.ID = V.PROPRIETAIRE
+  INNER JOIN EVAL.MODELES M
+  ON V.MODELE = M.MODELE
+  INNER JOIN EVAL.ADRESSES A
+  ON P.ADRESSE = A.ID
+WHERE
+  M.ENERGIE IN ('EL', 'EE', 'EH', 'GL', 'GH')
+  AND REGEXP_LIKE(A.CODE_POSTAL, '^(44|49|53|72|85)');
+
+-- épreuve 2.3
+SELECT
+  MAX(C.MONTANT),
+  V.IMMATRICULATION
+FROM
+  EVAL.CONTRAVENTIONS C
+  INNER JOIN EVAL.VEHICULES V
+  ON C.VEHICULE = V.IMMATRICULATION
+GROUP BY
+  V.IMMATRICULATION;
